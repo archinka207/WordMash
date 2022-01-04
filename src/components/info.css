@@ -1,0 +1,25 @@
+.info {
+    padding: 0px 70px;
+    position: relative;
+    min-height: calc(100vh - 120px);
+    color: rgb(219, 217, 217);
+    font-size: 150%;
+}
+
+h1 {
+    color: #0bf387;
+    text-align: center;
+}
+
+.open-p {
+    color: #0bf387;
+    line-height: 5px;
+}
+
+.text-p {
+    text-indent: 25px;
+}
+
+p {
+    line-height: 35px;
+}
