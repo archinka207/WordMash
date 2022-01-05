@@ -1,7 +1,7 @@
 .info {
     padding: 0px 70px;
     position: relative;
-    min-height: calc(100vh - 120px);
+    min-height: calc(100vh - 119px);
     color: rgb(219, 217, 217);
     font-size: 150%;
 }

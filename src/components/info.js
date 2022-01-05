@@ -18,6 +18,7 @@ function Info () {
                 и вы сможете начать тренировку.</p>
             <p className='open-p'>Контакты</p>
             <p >почта: endru2005wwr@yandex.ru</p>
+
         </div>
     );
 }
