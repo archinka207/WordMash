@@ -9,8 +9,7 @@ function Navbar(props) {
             if (props.wordList[i].name == props.currentList) {  
                 //ar is a current arr            
                 let ar = props.wordList[i].arr;
-                console.log(ar);
-                console.log(props.currentList);
+
                 // make wordMash
                 let st = '';
                 for(let i = 0; i <= props.wordCount; i++) {
@@ -20,7 +19,7 @@ function Navbar(props) {
                 props.setWordMash(st);
             }
         }
-
+        document.getElementById('start').blur();
         props.setHandledWordMash('');
         props.setMode('content');
     }
@@ -41,7 +40,7 @@ function Navbar(props) {
             <div className='navbar-container'>
                 <button className='but-navbar' onClick={handleInfoClick}>Информация</button>
                 <button className='but-navbar' onClick={handleSettingsClick}>Настройки</button>
-                <button className='but-navbar' onClick={handleStartClick}>Запустить</button>
+                <button className='but-navbar' id = "start" onClick={handleStartClick}>Запустить</button>
             </div>
         </div>
     );

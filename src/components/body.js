@@ -20,9 +20,13 @@ function Body() {
     useEffect(() => {
         function handleKey (event) {
             if(event.key == wordMash[0]) {
-                console.log(event.key);
                 setHandledWordMash(handledWordMash + event.key);
                 setWordMash(wordMash.substring(1));
+            }
+            else if (event.key != wordMash[0] && mode == 'content') {
+                alert('Вы ошиблись, что бы повторно начать нажмите Запустить');
+                setWordMash('');
+                setHandledWordMash('');
             }
         }
         document.addEventListener('keyup',handleKey);
@@ -34,6 +38,8 @@ function Body() {
     useEffect(() => {
         saveWordlist();
     },[wordList]);
+
+
 
     function saveWordlist () {
         localStorage.setItem("wordList",JSON.stringify(wordList));
@@ -72,6 +78,7 @@ function Body() {
                 );
         }
     }
+
     return (
         <div className='Body'>
             <Navbar setWordMash={setWordMash} 
