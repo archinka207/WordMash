@@ -1,9 +1,9 @@
 .info {
     padding: 0px 70px;
     position: relative;
-    min-height: calc(100vh - 119px);
-    color: rgb(219, 217, 217);
+    color: rgb(206, 204, 204);
     font-size: 150%;
+    min-height: calc(100vh - 7px);
 }
 
 h1 {
@@ -17,9 +17,9 @@ h1 {
 }
 
 .text-p {
-    text-indent: 25px;
+    text-indent: 20px;
 }
 
 p {
-    line-height: 35px;
+    line-height:30px;
 }

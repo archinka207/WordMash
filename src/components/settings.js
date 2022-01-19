@@ -8,23 +8,20 @@ function Settings(props) {
     
     //onClick handling
     function handleAddClick (event) {
-        event.preventDefault();
+        event.preventDefault();  
         for(let i = 0; i < props.len; i++) {
-            //console.log(props.wordList[i].name);
-            //console.log(props.currentList);
             if (props.wordList[i].name == props.currentList) {              
-                let ar = props.wordList
-                ar[i].arr = [...ar[i].arr,{val:newWordValue}];
+                let ar = props.wordList;
+                ar[i].arr = [...ar[i].arr,newWordValue];
                 props.setWordList(ar);
-                //console.log(ar);
             }
         }
         setNewWordValue('');
+        props.saveWordlist(props.wordList);
     }
 
     function handleDellClick (event) {
         event.preventDefault();
-        console.log('hi')
         props.setWordList(props.wordList.filter((el) =>
             el.name != props.currentList
         ));
@@ -60,13 +57,37 @@ function Settings(props) {
         setNewWordListNameValue(event.target.value);
     }
 
-    function hanleSelectChange (event) {
+    function hanleSelectListChange (event) {
         event.preventDefault();
         props.setCurrentList(event.target.value);
+    }
+
+    function handleTestModeChange (event) {
+        event.preventDefault();
+        props.setTestMode(event.target.value);
+    }
+
+    function handleComplexityChange (event){
+        event.preventDefault();
+        props.setComplexity(event.target.value);
     }
     
     return (
         <div className='settings'>
+            <div className='select'>
+                <p className='settings-text'>режим работы</p>
+                <select onChange={handleTestModeChange} name='arr-select' className='arr--select' id='select1'>
+                    <option value={'context_test'}>контекстный режим</option>
+                    <option value={'word_test'}>словарный режим</option>
+                </select>
+            </div>
+            <div className='select'>
+                <p className='settings-text'>сложность</p>
+                <select onChange={handleComplexityChange} name='arr-select' className='arr--select' id='select1'>
+                    <option value={1}>легкая</option>
+                    <option value={2}>сложная</option>
+                </select>
+            </div>
             <form className='form'>
                 <p className='settings-text'>добавление нового слова в текущий список</p>
                 <input type = 'text' className='text-input' value={newWordValue} onChange={handleWordChange}/>
@@ -79,7 +100,7 @@ function Settings(props) {
             </form>
             <div className='select'>
                 <p className='settings-text'>выбор списка слов или удаление выбранного</p>
-                <select onChange={hanleSelectChange} name='arr-select' className='arr--select' id='select1'>
+                <select onChange={hanleSelectListChange} name='arr-select' className='arr--select' id='select1'>
                     {props.wordList.map((el) => {
                         return(<option key={el.name} value={el.name}>{el.name}</option>);
                     })}
