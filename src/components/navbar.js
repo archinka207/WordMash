@@ -21,13 +21,28 @@ function Navbar(props) {
                     props.setWordMash(st);
                 }
                 else if (props.testMode == 'context_test') {
+                    let sentences = []   
+                    let current_sentences = []
+                    let sent = ""
+                    sentences = props.wordContext.split('\n');
+                    const hasWord = (str, word) => str.split(/\s+/).includes(word);
+
+                    function find(word) {
+                        for (i in sentences) {
+                            if (hasWord(sentences[i],word)){
+                                sent = String(sentences[i]);
+                                current_sentences.push(sent);
+                            }
+                        }
+                    }
                     let wrd = ''; 
                     wrd += String(ar[parseInt(Math.random() * ar.length)]);
-                    let context = String(props.wordContext[wrd][parseInt(Math.random() * (props.wordContext[wrd]).length)]);
-                    props.setWordMash(context);
+                    find(wrd);
+                    props.setWordMash(current_sentences[parseInt(Math.random() * current_sentences.length)]);
                 }
             }
         }
+        
         document.getElementById('start').blur();
         props.setHandledWordMash('');
         props.setMode('content');

@@ -13,19 +13,14 @@ function Body() {
     const[mode,setMode] = useState('info');
     const[wordCount,setWordCount] = useState(10);
     const[testMode,setTestMode] = useState('context_test')
-    const[wordContext,setWordContext] = useState({});
+    const[wordContext,setWordContext] = useState("");
     const[complexity,setComplexity] = useState(1);
 
-    fetch("https://archinka207.github.io/lsls.json")
-    .then(response => 
-        response.json()
-    )
-    .then(data => JSON.stringify(data)
-    )
-    .then(dt => {
-        setWordContext(JSON.parse(dt));
-    }); 
-
+    useEffect(() => {
+        fetch('https://archinka207.github.io/eng_sentences.tsv.txt')
+        .then(response => response.text())
+        .then(data => setWordContext(String(data)));
+    },[]);
     useEffect(() => {
         getWordList();
     },[]);
