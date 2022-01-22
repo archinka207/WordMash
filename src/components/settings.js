@@ -71,6 +71,8 @@ function Settings(props) {
         event.preventDefault();
         props.setComplexity(event.target.value);
     }
+
+    
     
     return (
         <div className='settings'>
